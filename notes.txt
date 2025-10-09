@@ -11,3 +11,5 @@
 	[ ] 1 1 2 4			(invalid) //twice data
 
 [ ] create stack
+
+create a function than add back in a list with a (void *)content
