@@ -6,34 +6,27 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/08 19:22:41 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:06:59 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_inputs(char **args)
+void	valid_inputs(char **args)
 {
-	char	*str;
-
 	while (*args)
 	{
-		if (valid_str(*args))
-			return (1);
+		valid_str(*args);
 		++args;
 	}
-	str = ft_rsplit(args, ' ');
-
-	return (0);
 }
 
-int	valid_str(char *str)
+void	valid_str(char *str)
 {
 	while (*str)
 	{
 		if (!(ft_isdigit(*str) || (*str == ' ')))
-			return (1);
+			exit (1);
 		str++;
 	}
-	return (0);
 }
