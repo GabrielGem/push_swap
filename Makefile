@@ -6,7 +6,7 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/10/07 14:43:49 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/10/09 15:16:16 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(COMPILER) $(FLAGS) $(SRCS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) bonus
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 	rm -rf *.o
