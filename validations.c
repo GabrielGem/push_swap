@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/13 10:30:08 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/10/13 10:59:29 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ void	valid_order(t_lst **list)
 			return ;
 		current = current->next;
 	}
-	memclear(*list, errorlist)
+	memclear(*list, ERRORLIST);
 }
