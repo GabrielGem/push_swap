@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_inputs.c                                     :+:      :+:    :+:   */
+/*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/11 14:32:54 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/10/13 10:30:08 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	valid_args(char **args, char **str)
+t_lst	*validations(char **args)
 {
-	*str = ft_rsplit(args, ' ');
-	valid_str(*str);
+	t_lst	*list;
+	char	*str;
+
+	str = ft_rsplit(args, ' ');
+	valid_str(str);
+	list = create_list(str);
+	memclear(str, CLEARSTR);
+	valid_double_numbers(&list);
+	valid_order(&list);
+	return (list);
 }
 
 void	valid_str(char *str)
@@ -23,16 +31,12 @@ void	valid_str(char *str)
 	while (*str)
 	{
 		if (!(ft_isdigit(*str) || (*str == ' ')))
-		{
-			free(str);
-			write(1, "Error\n", 6);
-			exit (1);
-		}
+			memclear(str, ERRORSTR);
 		str++;
 	}
 }
 
-void	valid_numbers(t_lst **list)
+void	valid_double_numbers(t_lst **list)
 {
 	t_lst	*temp;
 	t_lst	*temp2;
@@ -44,29 +48,23 @@ void	valid_numbers(t_lst **list)
 		while (temp2)
 		{
 			if (temp->value == temp2->value)
-			{
-				lstclear(list, free);
-				write(1, "equals numbers\n", 14);
-				exit (0); // clear list and exit;
-			}
+				memclear(*list, ERRORLIST);
 			temp2 = temp2->next;
 		}
 		temp = temp->next;
 	}
 }
 
-void	valid_list(t_lst **list)
+void	valid_order(t_lst **list)
 {
-	t_lst	*temp;
-	t_lst	*temp2;
+	t_lst	*current;
 
-	temp = *list;
-	while (temp->next != NULL)
+	current = *list;
+	while (current->next != NULL)
 	{
-		temp2 = temp->next;
-		if (temp->value > temp2->value)
+		if (current->value > current->next->value)
 			return ;
-		temp = temp->next;
+		current = current->next;
 	}
-	write (1, "Ordered list\n", 13);
+	memclear(*list, errorlist)
 }
