@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/13 10:59:29 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:25:36 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	valid_double_numbers(t_lst **list)
 	t_lst	*temp2;
 
 	temp = *list;
-	while (temp)
+	while (temp->next != *list)
 	{
 		temp2 = temp->next;
-		while (temp2)
+		while (temp2->next != temp)
 		{
 			if (temp->value == temp2->value)
 				memclear(*list, ERRORLIST);
@@ -60,11 +60,12 @@ void	valid_order(t_lst **list)
 	t_lst	*current;
 
 	current = *list;
-	while (current->next != NULL)
+	while (current->next != *list)
 	{
 		if (current->value > current->next->value)
 			return ;
 		current = current->next;
 	}
-	memclear(*list, ERRORLIST);
+	memclear(*list, CLEARLIST);
+	exit (0);
 }
