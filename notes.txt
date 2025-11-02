@@ -19,9 +19,9 @@
 	[x]	sb (swap b): Swap the first 2 elements at the top of stack b.
 			Do nothing if there is only one element or none.
 	[?]	ss : sa and sb at the same time.
-	[ ]	pa (push a): Take the first element at the top of b and put it at the top of a.
+	[x]	pa (push a): Take the first element at the top of b and put it at the top of a.
 			Do nothing if b is empty.
-	[ ] pb (push b): Take the first element at the top of a and put it at the top of b.
+	[x] pb (push b): Take the first element at the top of a and put it at the top of b.
 			Do nothing if a is empty.
 	[x]	ra (rotate a): Shift up all elements of stack a by 1.
 			The first element becomes the last one.
@@ -33,6 +33,10 @@
 	[x]	rrb (reverse rotate b): Shift down all elements of stack b by 1.
 			The last element becomes the first one.
 	[?]	rrr : rra and rrb at the same time.	
+
+[ ] create array of operations
+	[ ] function for store moviments
+		[ ] function for print this array
 
 [ ] refactore main
 	[x] create a general validation function
