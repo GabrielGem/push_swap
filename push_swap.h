@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/14 12:04:19 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:49:55 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,18 @@ void	swap(t_lst **stack);
 void	rotate(t_lst **stack);
 void	rrotate(t_lst **stack);
 void	push(t_lst **stack, t_lst **stackb);
+//operations
+void	sa(t_lst **stack_a);
+void	sb(t_lst **stack_b);
+void	ss(t_lst **stack_a, t_lst **stack_b);
+void	pa(t_lst **stack_a, t_lst **stack_b);
+void	pb(t_lst **stack_b, t_lst **stack_a);
+void	ra(t_lst **stack_a);
+void	rb(t_lst **stack_a);
+void	rr(t_lst **stack_a, t_lst **stack_b);
+void	rra(t_lst **stack_a);
+void	rrb(t_lst **stack_a);
+void	rrr(t_lst **stack_a, t_lst **stack_b);
 // print moviments
 void	print_list(t_lst **stack, t_lst **stackb);
 #endif
