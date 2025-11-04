@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   test_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 19:58:10 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:07:04 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/03 20:06:34 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	moviments(t_lst **stack, t_lst **stackb)
 {
-	swap(stack);
+	sa(stack);
 	print_list(stack, stackb);
-	rotate(stack);
+	ra(stack);
 	print_list(stack, stackb);
-	rrotate(stack);
+	rra(stack);
 	print_list(stack, stackb);
-	push(stack, stackb);
+	pb(stack, stackb);
 	print_list(stack, stackb);
-	push(stack, stackb);
+	pb(stack, stackb);
 	print_list(stack, stackb);
-	rotate(stackb);
+	rb(stackb);
 	print_list(stack, stackb);
 }
 
@@ -37,7 +37,7 @@ void	print_list(t_lst **stack_a, t_lst **stack_b)
 	{
 		if (current_a)
 		{
-			printf("%d\t", current_a->value);
+			printf("%d\t", current_a->index);
 			current_a = current_a->next;
 			if (current_a == *stack_a)
 				current_a = NULL;
@@ -46,7 +46,7 @@ void	print_list(t_lst **stack_a, t_lst **stack_b)
 			printf("\t");
 		if (current_b)
 		{
-			printf("%d", current_b->value);
+			printf("%d", current_b->index);
 			current_b = current_b->next;
 			if (current_b == *stack_b)
 				current_b = NULL;
