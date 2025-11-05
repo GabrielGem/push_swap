@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:49:55 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:11:42 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
-typedef struct s_lst
+typedef struct s_stack
 {
 	int				value;
-	struct s_lst	*next;
-}	t_lst;
+	int				index;
+	struct s_stack	*next;
+}	t_stack;
 
 enum	e_options
 {
@@ -39,38 +40,39 @@ enum	e_options
 int		main(int argc, char **argv);
 
 // validations
-t_lst	*validations(char **args);
+t_stack	*validations(char **args);
 void	valid_str(char *str);
-void	valid_double_numbers(t_lst **list);
-void	valid_order(t_lst **list);
+void	valid_double_numbers(t_stack *list);
+void	valid_order(t_stack **list);
 // list
-t_lst	*create_list(char *str);
-t_lst	*new_node(int content);
-void	addnode_back(t_lst **lst, t_lst *new);
-void	addnode_front(t_lst **lst, t_lst *new);
-t_lst	*lstdetach_first(t_lst **stack);
-void	lstclear(t_lst **lst, void (*del)(void *));
+t_stack	*create_list(char *str);
+t_stack	*new_node(int content);
+void	addnode_back(t_stack **list, t_stack *new);
+void	addnode_front(t_stack **list, t_stack *new);
+t_stack	*lstdetach_first(t_stack **list);
+void	lstclear(t_stack **list, void (*del)(void *));
 // clear and messages
 void	memclear(void *adress, int option);
 void	error_message(void);
 // moviments
-void	moviments(t_lst **stack, t_lst **stackb);
-void	swap(t_lst **stack);
-void	rotate(t_lst **stack);
-void	rrotate(t_lst **stack);
-void	push(t_lst **stack, t_lst **stackb);
+void	moviments(t_stack **a, t_stack **b);
+void	swap(t_stack **stack);
+void	push(t_stack **dest, t_stack **src);
+void	rotate(t_stack **stack);
+void	rrotate(t_stack **stack);
 //operations
-void	sa(t_lst **stack_a);
-void	sb(t_lst **stack_b);
-void	ss(t_lst **stack_a, t_lst **stack_b);
-void	pa(t_lst **stack_a, t_lst **stack_b);
-void	pb(t_lst **stack_b, t_lst **stack_a);
-void	ra(t_lst **stack_a);
-void	rb(t_lst **stack_a);
-void	rr(t_lst **stack_a, t_lst **stack_b);
-void	rra(t_lst **stack_a);
-void	rrb(t_lst **stack_a);
-void	rrr(t_lst **stack_a, t_lst **stack_b);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **a);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **a);
+void	rrr(t_stack **a, t_stack **b);
 // print moviments
-void	print_list(t_lst **stack, t_lst **stackb);
+void	print_list(t_stack **a, t_stack **b);
+int		stacksize(t_stack *list);
 #endif

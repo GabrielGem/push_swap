@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   order_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 20:22:09 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:31:00 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:37:51 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_lst **stack_a)
+void	sa(t_stack **a)
 {
-	swap(stack_a);
+	swap(a);
+	printf("   sa\n");
 }
 
-void	sb(t_lst **stack_b)
+void	sb(t_stack **b)
 {
-	swap(stack_b);
+	swap(b);
+	printf("   sb\n");
 }
 
-void	pa(t_lst **stack_a, t_lst **stack_b)
+void	pa(t_stack **a, t_stack **b)
 {
-	push(stack_a, stack_b);
+	push(a, b);
+	printf("   pa\n");
 }
 
-void	pb(t_lst **stack_a, t_lst **stack_b)
+void	pb(t_stack **a, t_stack **b)
 {
-	push(stack_b, stack_a);
+	push(b, a);
+	printf("   pb\n");
 }

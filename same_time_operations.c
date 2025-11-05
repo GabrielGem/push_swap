@@ -6,26 +6,29 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 20:41:51 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:47:05 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:37:49 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_lst **stack_a, t_lst **stack_b)
+void	ss(t_stack **a, t_stack **b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(a);
+	swap(b);
+	printf("   ss\n");
 }
 
-void	rr(t_lst **stack_a, t_lst **stack_b)
+void	rr(t_stack **a, t_stack **b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(a);
+	rotate(b);
+	printf("   rr\n");
 }
 
-void	rrr(t_lst **stack_a, t_lst **stack_b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rrotate(stack_a);
-	rrotate(stack_b);
+	rrotate(a);
+	rrotate(b);
+	printf("   rrr\n");
 }

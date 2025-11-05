@@ -6,28 +6,32 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 20:36:52 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:40:31 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:37:53 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_lst **stack_a)
+void	ra(t_stack **a)
 {
-	rotate(stack_a);
+	rotate(a);
+	printf("   ra\n");
 }
 
-void	rb(t_lst **stack_b)
+void	rb(t_stack **b)
 {
-	rotate(stack_b);
+	rotate(b);
+	printf("   rb\n");
 }
 
-void	rra(t_lst **stack_a)
+void	rra(t_stack **a)
 {
-	rrotate(stack_a);
+	rrotate(a);
+	printf("   rra\n");
 }
 
-void	rrb(t_lst **stack_b)
+void	rrb(t_stack **b)
 {
-	rrotate(stack_b);
+	rrotate(b);
+	printf("   rrb\n");
 }
