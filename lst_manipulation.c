@@ -6,27 +6,27 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:20:24 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/10/14 12:07:01 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:49:18 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lst	*new_node(int value)
+t_stack	*new_node(int value)
 {
-	t_lst	*new_node;
+	t_stack	*new_node;
 
-	new_node = malloc(1 * sizeof(t_lst));
+	new_node = ft_calloc(sizeof(t_stack), 1);
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->next = NULL;
+	new_node->index = -1;
 	return (new_node);
 }
 
-void	addnode_back(t_lst **lst, t_lst *new)
+void	addnode_back(t_stack **lst, t_stack *new)
 {
-	t_lst	*last;
+	t_stack	*last;
 
 	if (!new || !lst)
 		return ;
@@ -43,9 +43,9 @@ void	addnode_back(t_lst **lst, t_lst *new)
 	new->next = *lst;
 }
 
-void	addnode_front(t_lst **lst, t_lst *new)
+void	addnode_front(t_stack **lst, t_stack *new)
 {
-	t_lst	*last;
+	t_stack	*last;
 
 	if (!lst || !new)
 		return ;
@@ -63,11 +63,11 @@ void	addnode_front(t_lst **lst, t_lst *new)
 	*lst = new;
 }
 
-t_lst	*lstdetach_first(t_lst **stack)
+t_stack	*lstdetach_first(t_stack **stack)
 {
-	t_lst	*second;
-	t_lst	*last;
-	t_lst	*detached;
+	t_stack	*second;
+	t_stack	*last;
+	t_stack	*detached;
 
 	second = (*stack)->next;
 	last = *stack;
@@ -80,10 +80,10 @@ t_lst	*lstdetach_first(t_lst **stack)
 	return (detached);
 }
 
-void	lstclear(t_lst **lst, void (*del)(void *))
+void	lstclear(t_stack **lst, void (*del)(void *))
 {
-	t_lst	*temp_node;
-	t_lst	*last;
+	t_stack	*temp_node;
+	t_stack	*last;
 
 	if (!*lst || !lst || !del)
 		return ;

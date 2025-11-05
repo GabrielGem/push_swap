@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   lst_manipulation_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
+/*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 15:57:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 17:35:44 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/03 12:27:15 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/04 17:49:50 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	lstsize(t_stack *lst)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int		i;
+	t_stack	*current;
 
-	if (argc < 2)
-		return (0);
-	a = validations(&argv[1]);
-	b = NULL;
-	print_list(&a, &b);
-	moviments(&a, &b);
-	print_list(&a, &b);
-	lstclear(&a, free);
-	if (b)
-		lstclear(&b,free);
-	return (1);
+	i = 0;
+	current = lst;
+	while (current->next != lst)
+	{
+		current = current->next;
+		i++;
+	}
+	return (++i);
 }

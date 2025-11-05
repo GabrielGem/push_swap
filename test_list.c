@@ -6,50 +6,50 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 19:58:10 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/03 20:06:34 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:19:31 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	moviments(t_lst **stack, t_lst **stackb)
+void	moviments(t_stack **a, t_stack **b)
 {
-	sa(stack);
-	print_list(stack, stackb);
-	ra(stack);
-	print_list(stack, stackb);
-	rra(stack);
-	print_list(stack, stackb);
-	pb(stack, stackb);
-	print_list(stack, stackb);
-	pb(stack, stackb);
-	print_list(stack, stackb);
-	rb(stackb);
-	print_list(stack, stackb);
+	sa(a);
+	print_list(a, b);
+	ra(a);
+	print_list(a, b);
+	rra(a);
+	print_list(a, b);
+	pb(a, b);
+	print_list(a, b);
+	pb(a, b);
+	print_list(a, b);
+	rb(b);
+	print_list(a, b);
 }
 
-void	print_list(t_lst **stack_a, t_lst **stack_b)
+void	print_list(t_stack **a, t_stack **b)
 {
-	t_lst	*current_a = stack_a ? *stack_a : NULL;
-	t_lst	*current_b = stack_b ? *stack_b : NULL;
+	t_stack *list_a = a ? *a : NULL;
+	t_stack *list_b = b ? *b : NULL;
 
-	while (current_a || current_b)
+	while (list_a || list_b)
 	{
-		if (current_a)
+		if (list_a)
 		{
-			printf("%d\t", current_a->index);
-			current_a = current_a->next;
-			if (current_a == *stack_a)
-				current_a = NULL;
+			printf("%d\t", list_a->index);
+			list_a = list_a->next;
+			if (list_a == *a)
+				list_a = NULL;
 		}
 		else
 			printf("\t");
-		if (current_b)
+		if (list_b)
 		{
-			printf("%d", current_b->index);
-			current_b = current_b->next;
-			if (current_b == *stack_b)
-				current_b = NULL;
+			printf("%d", list_b->index);
+			list_b = list_b->next;
+			if (list_b == *b)
+				list_b = NULL;
 		}
 		printf("\n");
 	}

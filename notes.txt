@@ -38,6 +38,8 @@
 	[ ] function for store moviments
 		[ ] function for print this array
 
+[x] function to attach indexes
+
 [ ] refactore main
 	[x] create a general validation function
 

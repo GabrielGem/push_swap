@@ -6,17 +6,19 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:48:36 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/01 20:42:49 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:52:41 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_lst **stack)
+void	swap(t_stack **stack)
 {
-	t_lst	*swap;
-	t_lst	*last;
+	t_stack	*swap;
+	t_stack	*last;
 
+	if (!*stack)
+		return ;
 	last = *stack;
 	while (last->next != *stack)
 		last = last->next;
@@ -27,23 +29,29 @@ void	swap(t_lst **stack)
 	*stack = swap;
 }
 
-void	push(t_lst **stack, t_lst **stackb)
+void	push(t_stack **dest, t_stack **src)
 {
-	t_lst	*temp;
+	t_stack	*temp;
 
-	temp = lstdetach_first(stack);
-	addnode_front(stackb, temp);
+	if (!*src)
+		return ;
+	temp = lstdetach_first(src);
+	addnode_front(dest, temp);
 }
 
-void	rotate(t_lst **stack)
+void	rotate(t_stack **stack)
 {
+	if (!*stack)
+		return ;
 	*stack = (*stack)->next;
 }
 
-void	rrotate(t_lst **stack)
+void	rrotate(t_stack **stack)
 {
-	t_lst	*last;
+	t_stack	*last;
 
+	if (!*stack)
+		return ;
 	last = *stack;
 	while (last->next != *stack)
 		last = last->next;
