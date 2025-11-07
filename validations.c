@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 21:09:48 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:51:37 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ t_stack	*validations(char **args)
 	char	*str;
 	t_stack	*list;
 
+	empty_arguments(args);
 	str = ft_revsplit(args, ' ');
 	valid_str(str);
-	list = create_list(str);
+	list = stack_list(str);
 	memclear(str, CLEARSTR);
 	valid_double_numbers(list);
 	valid_order(list);
@@ -33,10 +34,11 @@ void	valid_str(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!(ft_isdigit(str[i]) || (str[i] == ' ')
-			|| (str[i] == '-') || (str[i] == '+')))
+		if (!(ft_isdigit(str[i]) || (str[i] == ' ') || ft_issignal(str[i])))
 			memclear(str, ERRORSTR);
-		if (ft_strchr("+-", str[i]) && ft_strchr("+-", str[i + 1]))
+		if (ft_issignal(str[i]) && ft_issignal(str[i + 1]))
+			memclear(str, ERRORSTR);
+		if (ft_issignal(str[i]) && !ft_isdigit(str[i + 1]))
 			memclear(str, ERRORSTR);
 		i++;
 	}
@@ -79,4 +81,14 @@ void	valid_order(t_stack *list)
 	}
 	memclear(list, CLEARLIST);
 	exit (0);
+}
+
+void	empty_arguments(char **args)
+{
+	while (*args)
+	{
+		if (**args == '\0')
+			memclear(NULL, ERRORMSG);
+		args++;
+	}
 }
