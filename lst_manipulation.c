@@ -6,41 +6,30 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:20:24 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 18:23:15 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:38:40 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_node(int value)
+void	*new_node(int value, char *move, int option)
 {
-	t_stack	*new_node;
+	void	*new_node;
 
-	new_node = ft_calloc(sizeof(t_stack), 1);
+	if (option == VALUE)
+		new_node = ft_calloc(sizeof(t_stack), 1);
+	if (option == MOVE)
+		new_node = ft_calloc(sizeof(t_moves), 1);
 	if (!new_node)
 		return (NULL);
-	new_node->value = value;
-	new_node->index = -1;
-	return (new_node);
-}
-
-void	addnode_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*last;
-
-	if (!new || !lst)
-		return ;
-	if (!*lst)
+	if (option == VALUE)
 	{
-		*lst = new;
-		new->next = new;
-		return ;
+		((t_stack *)new_node)->value = value;
+		((t_stack *)new_node)->index = -1;
 	}
-	last = *lst;
-	while (last->next != *lst)
-		last = last->next;
-	last->next = new;
-	new->next = *lst;
+	if (option == MOVE)
+		((t_moves *)new_node)->move = move;
+	return (new_node);
 }
 
 void	addnode_front(t_stack **lst, t_stack *new)
