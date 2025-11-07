@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 19:11:42 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:50:04 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_moves
+{
+	char			*move;
+	struct s_moves	*next;
+}	t_moves;
+
+typedef struct s_orch
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_moves	*moves;
+}	t_orch;
+
 enum	e_options
 {
 	CLEAR,
@@ -34,16 +47,18 @@ enum	e_options
 	ERROR,
 	ERRORSTR,
 	ERRORLIST,
+	ERRORMSG,
 	ERRORSTACK
 };
 
 int		main(int argc, char **argv);
+t_orch	init_info(void);
 
 // validations
 t_stack	*validations(char **args);
 void	valid_str(char *str);
 void	valid_double_numbers(t_stack *list);
-void	valid_order(t_stack **list);
+void	valid_order(t_stack *list);
 // list
 t_stack	*create_list(char *str);
 t_stack	*new_node(int content);
@@ -55,24 +70,24 @@ void	lstclear(t_stack **list, void (*del)(void *));
 void	memclear(void *adress, int option);
 void	error_message(void);
 // moviments
-void	moviments(t_stack **a, t_stack **b);
 void	swap(t_stack **stack);
 void	push(t_stack **dest, t_stack **src);
 void	rotate(t_stack **stack);
 void	rrotate(t_stack **stack);
 //operations
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **a);
-void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **a);
-void	rrr(t_stack **a, t_stack **b);
+void	sa(t_orch *info);
+void	sb(t_orch *info);
+void	ss(t_orch *info);
+void	pa(t_orch *info);
+void	pb(t_orch *info);
+void	ra(t_orch *info);
+void	rb(t_orch *info);
+void	rr(t_orch *info);
+void	rra(t_orch *info);
+void	rrb(t_orch *info);
+void	rrr(t_orch *info);
 // print moviments
-void	print_list(t_stack **a, t_stack **b);
+void	moviments(t_orch *info);
+void	print_list(t_orch *info);
 int		stacksize(t_stack *list);
 #endif

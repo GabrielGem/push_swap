@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 11:26:58 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 17:50:05 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:49:33 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	memclear(void *adress, int option)
 		free(adress);
 	if (option == CLEARLIST || option == ERRORLIST)
 		lstclear((t_stack **)&adress, free);
-	if (option == ERRORSTR || option == ERRORLIST)
+	if (option == ERRORSTR || option == ERRORLIST || option == ERRORMSG)
 		error_message();
 }
 

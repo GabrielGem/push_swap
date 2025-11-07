@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 16:05:22 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/02 20:00:16 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:20:09 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ enum e_index
 
 int	main(void)
 {
-	int	len;
-	int	array[10] = {6, 3, 7, 8, 9, 5, 0, 1, 2, 4};
+	int			len;
+	static int	array[10] = {6, 3, 7, 8, 9, 5, 0, 1, 2, 4};
 
 	len = 10;
 	print_array(array, len);

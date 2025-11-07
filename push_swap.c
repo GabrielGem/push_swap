@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 17:35:44 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:34:49 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,26 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_orch	info;
 
 	if (argc < 2)
 		return (0);
-	a = validations(&argv[1]);
-	b = NULL;
-	print_list(&a, &b);
-	moviments(&a, &b);
-	print_list(&a, &b);
-	lstclear(&a, free);
-	if (b)
-		lstclear(&b,free);
+	info = init_info();
+	info.a = validations(&argv[1]);
+	print_list(&info);
+	moviments(&info);
+	lstclear(&info.a, free);
+	if (info.b)
+		lstclear(&info.b, free);
 	return (1);
+}
+
+t_orch	init_info(void)
+{
+	t_orch	info;
+
+	info.a = NULL;
+	info.b = NULL;
+	info.moves = NULL;
+	return (info);
 }

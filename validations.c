@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 19:10:46 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/06 21:09:48 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,23 @@ t_stack	*validations(char **args)
 	list = create_list(str);
 	memclear(str, CLEARSTR);
 	valid_double_numbers(list);
-	valid_order(&list);
+	valid_order(list);
 	return (list);
 }
 
 void	valid_str(char *str)
 {
-	while (*str)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (!(ft_isdigit(*str) || (*str == ' ') || (*str == '-')))
+		if (!(ft_isdigit(str[i]) || (str[i] == ' ')
+			|| (str[i] == '-') || (str[i] == '+')))
 			memclear(str, ERRORSTR);
-		str++;
+		if (ft_strchr("+-", str[i]) && ft_strchr("+-", str[i + 1]))
+			memclear(str, ERRORSTR);
+		i++;
 	}
 }
 
@@ -50,7 +56,7 @@ void	valid_double_numbers(t_stack *list)
 		while (j != i)
 		{
 			if (i->value == j->value)
-				memclear(&list, ERRORLIST);
+				memclear(list, ERRORLIST);
 			if (j->value < i->value)
 				index++;
 			j = j->next;
@@ -60,17 +66,17 @@ void	valid_double_numbers(t_stack *list)
 	}
 }
 
-void	valid_order(t_stack **list)
+void	valid_order(t_stack *list)
 {
 	t_stack	*current;
 
-	current = *list;
-	while (current->next != *list)
+	current = list;
+	while (current->next != list)
 	{
 		if (current->value > current->next->value)
 			return ;
 		current = current->next;
 	}
-	memclear(*list, CLEARLIST);
+	memclear(list, CLEARLIST);
 	exit (0);
 }
