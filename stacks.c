@@ -6,13 +6,13 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 21:21:47 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:21:44 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*create_list(char *str)
+t_stack	*stack_list(char *str)
 {
 	t_stack	*list;
 	t_stack	*temp;
@@ -21,24 +21,25 @@ t_stack	*create_list(char *str)
 	list = NULL;
 	while (*str)
 	{
-		while (*str && !(ft_isdigit(*str) || *str == '-' || *str == '+'))
+		while (*str && !(ft_isdigit(*str) || ft_issignal(*str)))
 			str++;
 		if (!*str)
 			break ;
 		value = ft_atoi(str);
-		temp = new_node(value);
-		while (*str && (ft_isdigit(*str) || *str == '-' || *str == '+'))
+		temp = (t_stack *)new_node(value, NULL, VALUE);
+		while (*str && (ft_isdigit(*str) || ft_issignal(*str)))
 			str++;
-		addnode_back(&list, temp);
+		stack_add_back(&list, temp);
 	}
 	return (list);
 }
 
-//void	add_moves(t_orch *info, char *move)
-//{
-//	t_orch	*last;
-//
-//	if (!info->moves)
-//		info->moves = move;
-//	last = info;
-//}
+void	move_list(t_orch *info, char *move)
+{
+	t_moves	*temp;
+
+	if (!move)
+		return ;
+	temp = (t_moves *)new_node(0, move, MOVE);
+	move_add_back(&info->moves, temp);
+}
