@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 20:50:04 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:39:16 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ enum	e_options
 	ERRORSTR,
 	ERRORLIST,
 	ERRORMSG,
-	ERRORSTACK
+	ERRORSTACK,
+	MOVE,
+	VALUE
 };
 
 int		main(int argc, char **argv);
@@ -59,10 +61,13 @@ t_stack	*validations(char **args);
 void	valid_str(char *str);
 void	valid_double_numbers(t_stack *list);
 void	valid_order(t_stack *list);
+void	empty_arguments(char **args);
 // list
-t_stack	*create_list(char *str);
-t_stack	*new_node(int content);
-void	addnode_back(t_stack **list, t_stack *new);
+t_stack	*stack_list(char *str);
+void	move_list(t_orch *info, char *move);
+void	*new_node(int value, char *move, int option);
+void	stack_add_back(t_stack **list, t_stack *new);
+void	move_add_back(t_moves **lst, t_moves *new);
 void	addnode_front(t_stack **list, t_stack *new);
 t_stack	*lstdetach_first(t_stack **list);
 void	lstclear(t_stack **list, void (*del)(void *));
@@ -87,7 +92,9 @@ void	rra(t_orch *info);
 void	rrb(t_orch *info);
 void	rrr(t_orch *info);
 // print moviments
+void	ft_lstitermoves(t_moves *lst, int (*f)(const char *, ...));
 void	moviments(t_orch *info);
 void	print_list(t_orch *info);
 int		stacksize(t_stack *list);
+
 #endif
