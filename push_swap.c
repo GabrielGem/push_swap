@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 17:34:49 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/08 17:10:21 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	info = init_info();
+	info = (t_orch){.a = NULL, .b = NULL, .moves = NULL};
 	info.a = validations(&argv[1]);
 	print_list(&info);
 	moviments(&info);
+	ft_lstitermoves(info.moves, printf);
 	lstclear(&info.a, free);
-	if (info.b)
-		lstclear(&info.b, free);
+	lstclear(&info.b, free);
+	movelstclear(&info.moves, free);
 	return (1);
-}
-
-t_orch	init_info(void)
-{
-	t_orch	info;
-
-	info.a = NULL;
-	info.b = NULL;
-	info.moves = NULL;
-	return (info);
 }
