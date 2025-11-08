@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 19:21:44 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/08 20:10:33 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,25 @@ t_stack	*stack_list(char *str)
 {
 	t_stack	*list;
 	t_stack	*temp;
-	int		value;
+	long	value;
+	int		i;
 
 	list = NULL;
-	while (*str)
+	i = 0;
+	while (str[i])
 	{
-		while (*str && !(ft_isdigit(*str) || ft_issignal(*str)))
-			str++;
-		if (!*str)
+		while (str[i] && !(ft_isdigit(str[i]) || ft_issignal(str[i])))
+			i++;
+		if (!str[i])
 			break ;
-		value = ft_atoi(str);
+		value = ft_atol(&str[i]);
+		if (value > MAX_INT || value < MIN_INT)
+			memclear(str, CLEARSTR);
+		if (value > MAX_INT || value < MIN_INT)
+			memclear(list, ERRORLIST);
 		temp = (t_stack *)new_node(value, NULL, VALUE);
-		while (*str && (ft_isdigit(*str) || ft_issignal(*str)))
-			str++;
+		while (str[i] && (ft_isdigit(str[i]) || ft_issignal(str[i])))
+			i++;
 		stack_add_back(&list, temp);
 	}
 	return (list);
