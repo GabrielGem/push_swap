@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 19:39:16 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/08 18:59:35 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,13 @@ enum	e_options
 	VALUE
 };
 
+enum	e_limits
+{
+	MAX_INT = 2147483647,
+	MIN_INT = -2147483648
+};
+
 int		main(int argc, char **argv);
-t_orch	init_info(void);
 
 // validations
 t_stack	*validations(char **args);
@@ -71,6 +76,7 @@ void	move_add_back(t_moves **lst, t_moves *new);
 void	addnode_front(t_stack **list, t_stack *new);
 t_stack	*lstdetach_first(t_stack **list);
 void	lstclear(t_stack **list, void (*del)(void *));
+void	movelstclear(t_moves **lst, void (*del)(void *));
 // clear and messages
 void	memclear(void *adress, int option);
 void	error_message(void);
