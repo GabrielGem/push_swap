@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:20:24 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 16:38:40 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/08 17:08:11 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ t_stack	*lstdetach_first(t_stack **stack)
 	t_stack	*last;
 	t_stack	*detached;
 
+	if (!stack || !*stack)
+		return (NULL);
+	if ((*stack)->next == *stack)
+	{
+		detached = *stack;
+		*stack = NULL;
+		return (detached);
+	}
 	second = (*stack)->next;
 	last = *stack;
 	while (last->next != *stack)
@@ -80,6 +88,26 @@ void	lstclear(t_stack **lst, void (*del)(void *))
 	while (last->next != *lst)
 		last = last->next;
 	last->next = NULL;
+	temp_node = *lst;
+	while (temp_node)
+	{
+		*lst = temp_node->next;
+		free(temp_node);
+		temp_node = *lst;
+	}
+	*lst = NULL;
+}
+
+void	movelstclear(t_moves **lst, void (*del)(void *))
+{
+	t_moves	*temp_node;
+	t_moves	*last;
+
+	if (!*lst || !lst || !del)
+		return ;
+	last = *lst;
+	while (last->next != NULL)
+		last = last->next;
 	temp_node = *lst;
 	while (temp_node)
 	{
