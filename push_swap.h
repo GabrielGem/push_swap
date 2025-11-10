@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/08 18:59:35 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:21:00 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	movelstclear(t_moves **lst, void (*del)(void *));
 void	memclear(void *adress, int option);
 void	error_message(void);
 // moviments
-void	swap(t_stack **stack);
-void	push(t_stack **dest, t_stack **src);
-void	rotate(t_stack **stack);
-void	rrotate(t_stack **stack);
+int	swap(t_stack **stack);
+int	push(t_stack **dest, t_stack **src);
+int	rotate(t_stack **stack);
+int	rrotate(t_stack **stack);
 //operations
 void	sa(t_orch *info);
 void	sb(t_orch *info);
