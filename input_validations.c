@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 19:51:37 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/10 15:41:57 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_stack	*validations(char **args)
 {
 	char	*str;
 	t_stack	*list;
+	int		check;
 
 	empty_arguments(args);
 	str = ft_revsplit(args, ' ');
@@ -23,7 +24,12 @@ t_stack	*validations(char **args)
 	list = stack_list(str);
 	memclear(str, CLEARSTR);
 	valid_double_numbers(list);
-	valid_order(list);
+	check = valid_order(list);
+	if (check)
+	{
+		memclear(list, CLEARLIST);
+		exit (0);
+	}
 	return (list);
 }
 
@@ -68,7 +74,7 @@ void	valid_double_numbers(t_stack *list)
 	}
 }
 
-void	valid_order(t_stack *list)
+int	valid_order(t_stack *list)
 {
 	t_stack	*current;
 
@@ -76,11 +82,10 @@ void	valid_order(t_stack *list)
 	while (current->next != list)
 	{
 		if (current->value > current->next->value)
-			return ;
+			return (0);
 		current = current->next;
 	}
-	memclear(list, CLEARLIST);
-	exit (0);
+	return (1);
 }
 
 void	empty_arguments(char **args)
