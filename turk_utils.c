@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:36:29 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/14 18:52:57 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/15 18:10:44 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ void	calc_cost(t_orch *stacks, t_calc *cost, int cmp)
 	else
 		new_cost.moves[RRA] = cost->len - dist;
 	dist = find_target(stacks->b, cmp);
-	if (dist <= cost->len / 2)
+	if (dist <= lstsize(stacks->b) / 2)
 		new_cost.moves[RB] = dist;
 	else
 		new_cost.moves[RRB] = lstsize(stacks->b) - dist;
-
 	if ((sum_moves(new_cost.moves, MOVEMENTS)) < (sum_moves(cost->moves, MOVEMENTS)))
 		rearrange_moves(&new_cost, cost, MOVEMENTS);
 }

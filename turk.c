@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:21:57 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/15 09:12:44 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/15 17:55:42 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	turk(t_orch *stacks)
 		cost = update_cost(stacks);
 		calc_cost(stacks, &cost, cost.cmp);
 		actual = stacks->b;
-		while (actual->next != stacks->b)
+		list = lstsize(stacks->b);
+		while (list--)
 		{
 			calc_cost(stacks, &cost, actual->index);
 			actual = actual->next;
