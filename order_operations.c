@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 20:22:09 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/10 14:17:29 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/15 08:51:29 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_orch *info)
 	check = swap(&info->a);
 	if (check)
 		move_list(info, "sa");
-	printf("   sa\n");
+	//printf("   sa\n");
 }
 
 void	sb(t_orch *info)
@@ -29,7 +29,7 @@ void	sb(t_orch *info)
 	check = swap(&info->b);
 	if (check)
 		move_list(info, "sb");
-	printf("   sb\n");
+	//printf("   sb\n");
 }
 
 void	pa(t_orch *info)
@@ -39,7 +39,7 @@ void	pa(t_orch *info)
 	check = push(&info->a, &info->b);
 	if (check)
 		move_list(info, "pa");
-	printf("   pa\n");
+	//printf("   pa\n");
 }
 
 void	pb(t_orch *info)
@@ -49,5 +49,5 @@ void	pb(t_orch *info)
 	check = push(&info->b, &info->a);
 	if (check)
 		move_list(info, "pb");
-	printf("   pb\n");
+	//printf("   pb\n");
 }

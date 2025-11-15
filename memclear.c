@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 11:26:58 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/06 20:49:33 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:51:00 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,11 @@ void	error_message(void)
 {
 	write(1, "Error\n", 6);
 	exit (0);
+}
+
+void	clear_list(t_orch *info)
+{
+	lstclear(&info->a, free);
+	lstclear(&info->b, free);
+	movelstclear(&info->moves, free);
 }

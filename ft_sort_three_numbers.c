@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   same_time_operations.c                             :+:      :+:    :+:   */
+/*   ft_sort_three_numbers.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 20:41:51 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/14 19:01:46 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/10 15:03:29 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/13 12:17:02 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_orch *info)
+void	sort_three_numbers(t_orch *info)
 {
-	swap(&info->a);
-	swap(&info->b);
-	move_list(info, "ss");
-	//printf("   ss\n");
-}
+	int	first;
+	int	second;
+	int	third;
 
-void	rr(t_orch *info)
-{
-	rotate(&info->a);
-	rotate(&info->b);
-	move_list(info, "rr");
-	//printf("   rr\n");
-}
-
-void	rrr(t_orch *info)
-{
-	rrotate(&info->a);
-	rrotate(&info->b);
-	move_list(info, "rrr");
-	//printf("   rrr\n");
+	first = info->a->index;
+	second = info->a->next->index;
+	third = info->a->next->next->index;
+	if (valid_order(info->a))
+		return ;
+	if (second > first)
+		rra(info);
+	else if (second < first && third < first)
+		ra(info);
+	else if (second < first)
+		sa(info);
+	sort_three_numbers(info);
 }

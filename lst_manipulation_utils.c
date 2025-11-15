@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:27:15 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 17:14:42 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/14 17:34:49 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	lstsize(t_stack *lst)
 	int		i;
 	t_stack	*current;
 
+	if (!lst)
+		return (0);
 	i = 0;
 	current = lst;
 	while (current->next != lst)

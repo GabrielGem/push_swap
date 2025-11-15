@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/11 20:16:47 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/14 18:37:49 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,26 @@ typedef struct s_orch
 	t_stack	*b;
 	t_moves	*moves;
 }	t_orch;
+
+enum	e_moves
+{
+	RRA,
+	RA,
+	RRB,
+	RB,
+	RR,
+	RRR,
+	MOVEMENTS
+};
+
+typedef struct s_calc
+{
+	int	min;
+	int	max;
+	int	cmp;
+	int	len;
+	int	moves[MOVEMENTS];
+}	t_calc;
 
 enum	e_options
 {
@@ -86,6 +106,7 @@ int		swap(t_stack **stack);
 int		push(t_stack **dest, t_stack **src);
 int		rotate(t_stack **stack);
 int		rrotate(t_stack **stack);
+void	do_moves(t_orch *stacks, t_calc *cost);
 //operations
 void	sa(t_orch *info);
 void	sb(t_orch *info);
@@ -100,6 +121,17 @@ void	rrb(t_orch *info);
 void	rrr(t_orch *info);
 //sorting
 void	sort_three_numbers(t_orch *info);
+void	turk(t_orch *stacks);
+//calcs
+t_calc	update_cost(t_orch *stacks);
+int		big_number(t_stack *list);
+int		small_number(t_stack *list);
+void	calc_cost(t_orch *stacks, t_calc *cost, int cmp);
+int		sum_moves(int *array, int size);
+int		find_smallest_bigger(t_stack *loose, int bigger, int cmp);
+int		find_target(t_stack *losse, int target);
+void	rearrange_moves(t_calc *new, t_calc *old, int size);
+void	double_moves(t_calc *cost);
 // print moviments
 void	ft_lstitermoves(t_moves *lst, int (*f)(const char *, ...));
 void	clear_list(t_orch *info);
