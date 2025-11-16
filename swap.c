@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_manipulation_utils.c                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 12:27:15 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 17:49:50 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/16 11:30:51 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/16 11:31:13 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lstsize(t_stack *lst)
+void	sa(t_orch *info)
 {
-	int		i;
-	t_stack	*current;
+	int	check;
 
-	i = 0;
-	current = lst;
-	while (current->next != lst)
-	{
-		current = current->next;
-		i++;
-	}
-	return (++i);
+	check = swap(&info->a);
+	if (check)
+		ft_putstr_fd("sa\n", 1);
+}
+
+void	sb(t_orch *info)
+{
+	int	check;
+
+	check = swap(&info->b);
+	if (check)
+		ft_putstr_fd("sb\n", 1);
 }

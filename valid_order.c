@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   valid_order.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
+/*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 15:57:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 11:55:05 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/16 11:56:44 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/16 11:57:10 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	valid_order(t_stack *list)
 {
-	t_orch	stacks;
+	t_stack	*current;
 
-	if (argc < 2)
-		return (0);
-	stacks = (t_orch){.a = NULL, .b = NULL};
-	stacks.a = validations(&argv[1]);
-	turk(&stacks);
-	stack_clear(&stacks.a, free);
+	current = list;
+	while (current->next != list)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
 	return (1);
 }

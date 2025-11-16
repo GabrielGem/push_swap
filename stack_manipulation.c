@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_manipulation.c                                 :+:      :+:    :+:   */
+/*   stack_manipulation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:20:24 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/04 17:49:18 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:14:27 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_node(int value)
+t_stack	*stack_new_node(int value)
 {
 	t_stack	*new_node;
 
@@ -24,26 +24,7 @@ t_stack	*new_node(int value)
 	return (new_node);
 }
 
-void	addnode_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*last;
-
-	if (!new || !lst)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		new->next = new;
-		return ;
-	}
-	last = *lst;
-	while (last->next != *lst)
-		last = last->next;
-	last->next = new;
-	new->next = *lst;
-}
-
-void	addnode_front(t_stack **lst, t_stack *new)
+void	stack_addnode_front(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
 
@@ -63,12 +44,20 @@ void	addnode_front(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-t_stack	*lstdetach_first(t_stack **stack)
+t_stack	*stack_detach_first(t_stack **stack)
 {
 	t_stack	*second;
 	t_stack	*last;
 	t_stack	*detached;
 
+	if (!stack || !*stack)
+		return (NULL);
+	if ((*stack)->next == *stack)
+	{
+		detached = *stack;
+		*stack = NULL;
+		return (detached);
+	}
 	second = (*stack)->next;
 	last = *stack;
 	while (last->next != *stack)
@@ -80,7 +69,7 @@ t_stack	*lstdetach_first(t_stack **stack)
 	return (detached);
 }
 
-void	lstclear(t_stack **lst, void (*del)(void *))
+void	stack_clear(t_stack **lst, void (*del)(void *))
 {
 	t_stack	*temp_node;
 	t_stack	*last;

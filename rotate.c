@@ -1,34 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   same_time_operations.c                             :+:      :+:    :+:   */
+/*   rotate_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 20:41:51 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 10:07:56 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/01 20:36:52 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/16 10:09:10 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_orch *info)
+void	ra(t_orch *info)
 {
-	swap(&info->a);
-	swap(&info->b);
-	ft_putstr_fd("ss\n", 1);
+	int	check;
+
+	check = rotate(&info->a);
+	if (check)
+		ft_putstr_fd("ra\n", 1);
 }
 
-void	rr(t_orch *info)
+void	rb(t_orch *info)
 {
-	rotate(&info->a);
-	rotate(&info->b);
-	ft_putstr_fd("rr\n", 1);
+	int	check;
+
+	check = rotate(&info->b);
+	if (check)
+		ft_putstr_fd("rb\n", 1);
 }
 
-void	rrr(t_orch *info)
+void	rra(t_orch *info)
 {
-	rrotate(&info->a);
-	rrotate(&info->b);
-	ft_putstr_fd("rrr\n", 1);
+	int	check;
+
+	check = rrotate(&info->a);
+	if (check)
+		ft_putstr_fd("rra\n", 1);
+}
+
+void	rrb(t_orch *info)
+{
+	int	check;
+
+	check = rrotate(&info->b);
+	if (check)
+		ft_putstr_fd("rrb\n", 1);
 }
