@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:11 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/14 17:06:25 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:55:05 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	stacks = (t_orch){.a = NULL, .b = NULL, .moves = NULL};
+	stacks = (t_orch){.a = NULL, .b = NULL};
 	stacks.a = validations(&argv[1]);
 	turk(&stacks);
-	ft_lstitermoves(stacks.moves, printf);
-	clear_list(&stacks);
+	stack_clear(&stacks.a, free);
 	return (1);
 }
