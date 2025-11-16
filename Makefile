@@ -6,21 +6,22 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/14 16:55:08 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/16 12:28:57 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -g3 -I.
+FLAGS = -Wall -Wextra -Werror -I.
 COMPILER = cc
 
-SRCS = push_swap.c input_validations.c stacks.c memclear.c \
-	   lst_manipulation.c lst_manipulation_utils.c \
-order_operations.c rotate_operations.c same_time_operations.c \
-ft_sort_three_numbers.c find_small_or_big_number.c turk.c turk_utils.c
-
-#functions for test
-SRCS += moviments.c test_list.c
+SRCS = \
+	push_swap.c \
+	input_validations.c stack_create.c memclear.c \
+	stack_manipulation.c stack_manipulation_utils.c \
+	swap.c push.c rotate.c same_time_operations.c \
+	sort_three_numbers.c find_small_or_big_number.c turk.c calc_cost.c \
+	moviments.c check_double_moves.c \
+	do_moves.c find_target.c valid_order.c
 
 LIBFT = libft.a
 LIBFT_DIR = libft/
