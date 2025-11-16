@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order_operations.c                                 :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 20:22:09 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/15 08:51:29 by gabrgarc         ###   ########.fr       */
+/*   Created: 2025/11/16 11:30:51 by gabrgarc          #+#    #+#             */
+/*   Updated: 2025/11/16 11:31:13 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,14 @@ void	sa(t_orch *info)
 
 	check = swap(&info->a);
 	if (check)
-		move_list(info, "sa");
-	//printf("   sa\n");
+		ft_putstr_fd("sa\n", 1);
 }
 
 void	sb(t_orch *info)
 {
-	int check;
+	int	check;
 
 	check = swap(&info->b);
 	if (check)
-		move_list(info, "sb");
-	//printf("   sb\n");
-}
-
-void	pa(t_orch *info)
-{
-	int	check;
-
-	check = push(&info->a, &info->b);
-	if (check)
-		move_list(info, "pa");
-	//printf("   pa\n");
-}
-
-void	pb(t_orch *info)
-{
-	int	check;
-
-	check = push(&info->b, &info->a);
-	if (check)
-		move_list(info, "pb");
-	//printf("   pb\n");
+		ft_putstr_fd("sb\n", 1);
 }
