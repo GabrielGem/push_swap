@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 12:20:37 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/16 16:00:25 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@ t_stack	*validations(char **args)
 static void	valid_str(char *str)
 {
 	int	i;
+	int	number;
 
 	i = 0;
+	number = 0;
 	while (str[i])
 	{
+		if (ft_isdigit(str[i]))
+			number = 1;
 		if (!(ft_isdigit(str[i]) || (str[i] == ' ') || ft_issignal(str[i])))
 			memclear(str, ERRORSTR);
 		if (ft_issignal(str[i]) && ft_issignal(str[i + 1]))
@@ -52,6 +56,8 @@ static void	valid_str(char *str)
 			memclear(str, ERRORSTR);
 		i++;
 	}
+	if (!number)
+		memclear(str, ERRORSTR);
 }
 
 static void	valid_double_numbers(t_stack *list)
