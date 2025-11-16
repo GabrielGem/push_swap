@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:48:36 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/10 14:19:53 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:52:03 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	push(t_stack **dest, t_stack **src)
 
 	if (!*src)
 		return (0);
-	temp = lstdetach_first(src);
-	addnode_front(dest, temp);
+	temp = stack_detach_first(src);
+	stack_addnode_front(dest, temp);
 	return (1);
 }
 
