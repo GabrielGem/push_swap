@@ -6,31 +6,25 @@
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 11:26:58 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/12 11:51:00 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:31:14 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	error_message(void);
+
 void	memclear(void *adress, int option)
 {
-	if (option == CLEARSTR || option == ERRORSTR)
+	if (option == ERRORSTR)
 		free(adress);
-	if (option == CLEARLIST || option == ERRORLIST)
-		lstclear((t_stack **)&adress, free);
-	if (option == ERRORSTR || option == ERRORLIST || option == ERRORMSG)
-		error_message();
+	if (option == ERRORLIST)
+		stack_clear((t_stack **)&adress, free);
+	error_message();
 }
 
-void	error_message(void)
+static void	error_message(void)
 {
 	write(1, "Error\n", 6);
 	exit (0);
-}
-
-void	clear_list(t_orch *info)
-{
-	lstclear(&info->a, free);
-	lstclear(&info->b, free);
-	movelstclear(&info->moves, free);
 }
