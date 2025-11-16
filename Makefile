@@ -6,12 +6,12 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/16 15:46:38 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/16 15:59:40 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -I.
+FLAGS = -Wall -Wextra -Werror -g3 -I.
 COMPILER = cc
 
 SRCS = \
@@ -31,7 +31,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT)
+$(NAME): $(SRCS) $(LIBFT)
 	$(COMPILER) $(FLAGS) $(SRCS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 $(LIBFT):
