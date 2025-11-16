@@ -6,7 +6,7 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/16 12:28:57 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/16 14:13:05 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,15 @@ COMPILER = cc
 
 SRCS = \
 	push_swap.c \
-	input_validations.c stack_create.c memclear.c \
-	stack_manipulation.c stack_manipulation_utils.c \
-	swap.c push.c rotate.c same_time_operations.c \
-	sort_three_numbers.c find_small_or_big_number.c turk.c calc_cost.c \
-	moviments.c check_double_moves.c \
-	do_moves.c find_target.c valid_order.c
+	input_validations.c \
+	valid_order.c \
+	stack_create.c stack_manipulation.c stack_manipulation_utils.c \
+	clear_and_error.c \
+	turk.c calc_cost.c sort_three_numbers.c find_small_or_big_number.c \
+	find_target.c \
+	check_double_moves.c do_moves.c \
+	swap.c push.c rotate.c double.c \
+	moviments.c
 
 LIBFT = libft.a
 LIBFT_DIR = libft/
