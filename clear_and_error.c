@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memclear.c                                         :+:      :+:    :+:   */
+/*   clear_and_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <gabrgarc@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 11:26:58 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 12:31:14 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/17 10:44:11 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	memclear(void *adress, int option)
 
 static void	error_message(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit (0);
 }
