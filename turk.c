@@ -6,14 +6,14 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:21:57 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 12:32:38 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:29:31 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static t_calc	update_cost(t_orch *stacks);
-static void		pre_order_list_a(t_orch *stacks);
+static void		pre_order_list_b(t_orch *stacks);
 static void		push_smaller_to_top(t_orch *stacks);
 
 void	turk(t_orch *stacks)
@@ -22,7 +22,7 @@ void	turk(t_orch *stacks)
 	t_stack	*actual;
 	int		size;
 
-	pre_order_list_a(stacks);
+	pre_order_list_b(stacks);
 	sort_three_numbers(stacks);
 	while (stack_size(stacks->b) != 0)
 	{
@@ -54,17 +54,20 @@ static t_calc	update_cost(t_orch *stacks)
 	return (cost);
 }
 
-static void	pre_order_list_a(t_orch *stacks)
+static void	pre_order_list_b(t_orch *stacks)
 {
-	int	list;
+	int	total_size;
+	int	actual_size;
 
-	list = stack_size(stacks->a);
-	while (stack_size(stacks->a) > list / 2 && stack_size(stacks->a) > 3)
+	total_size = stack_size(stacks->a);
+	actual_size = total_size;
+	while (actual_size > total_size / 2 && actual_size > 3)
 	{
-		if (stacks->a->index < list / 2)
+		if (stacks->a->index <= total_size / 2)
 			pb(stacks);
 		else
 			ra(stacks);
+		actual_size = stack_size(stacks->a);
 	}
 	while (stack_size(stacks->a) > 3)
 		pb(stacks);
