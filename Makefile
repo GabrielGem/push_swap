@@ -6,12 +6,13 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/16 15:59:40 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/17 17:02:02 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -g3 -I.
+NAME_BONUS = checker
+FLAGS = -Wall -Wextra -Werror -I.
 COMPILER = cc
 
 SRCS = \
@@ -26,6 +27,9 @@ SRCS = \
 	swap.c push.c rotate.c double.c \
 	moviments.c
 
+SRCS_BONUS = \
+	checker_bonus.c
+
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
@@ -36,6 +40,11 @@ $(NAME): $(SRCS) $(LIBFT)
 
 $(LIBFT):
 	$(MAKE) -sC $(LIBFT_DIR)
+
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(SRCS_BONUS) $(LIBFT)
+	$(COMPILER) $(FLAGS) $(SRCS_BONUS) -L$(LIBFT_DIR) -lft -o $(NAME_BONUS)
 
 clean:
 	rm -rf *.o
