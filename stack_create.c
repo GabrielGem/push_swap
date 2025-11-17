@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_stack.c                                     :+:      :+:    :+:   */
+/*   stack_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 12:17:08 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:18:31 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	convert_str_to_int(char	*str, t_stack **list, char *init_str);
+
 t_stack	*stack_create(char *str)
 {
 	t_stack	*list;
 	t_stack	*temp;
-	long	value;
+	int		value;
 	int		i;
 
 	list = NULL;
@@ -27,15 +29,40 @@ t_stack	*stack_create(char *str)
 			i++;
 		if (!str[i])
 			break ;
-		value = ft_atol(&str[i]);
-		if (value > MAX_INT || value < MIN_INT)
-			free(str);
-		if (value > MAX_INT || value < MIN_INT)
-			memclear(list, ERRORLIST);
+		value = convert_str_to_int(&str[i], &list, str);
 		temp = stack_new_node(value);
 		while (str[i] && (ft_isdigit(str[i]) || ft_issignal(str[i])))
 			i++;
 		stack_add_back(&list, temp);
 	}
 	return (list);
+}
+
+static int	convert_str_to_int(char	*str, t_stack **list, char *init_str)
+{
+	long	number;
+	int		sign;
+	int		i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	number = 0;
+	sign = 0;
+	if (ft_issignal(str[i]))
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		if (number > MAX_INT / 10)
+			free(init_str);
+		if (number > MAX_INT / 10)
+			memclear(*list, ERRORLIST);
+		number = (number * 10) + (str[i] - '0');
+		i++;
+	}
+	return (((int)number * sign));
 }
