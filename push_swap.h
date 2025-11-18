@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:57:33 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/16 12:30:12 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/18 10:45:01 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ enum	e_moves
 
 enum	e_options
 {
+	BIG,
+	SMALL,
 	ERRORSTR,
 	ERRORLIST,
 	ERRORMSG
@@ -105,8 +107,7 @@ void	turk(t_orch *stacks);
 void	sort_three_numbers(t_orch *info);
 
 //calcs
-int		big_number(t_stack *list);
-int		small_number(t_stack *list);
+int		big_or_small_number(t_stack *list, int option);
 void	calc_cost(t_orch *stacks, t_calc *cost, int cmp);
 int		find_target(t_stack *losse, int target);
 void	double_moves(t_calc *cost);
