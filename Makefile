@@ -6,7 +6,7 @@
 #    By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/06 15:16:10 by gabrgarc          #+#    #+#              #
-#    Updated: 2025/11/17 17:02:02 by gabrgarc         ###   ########.fr        #
+#    Updated: 2025/11/19 09:42:54 by gabrgarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,20 @@ SRCS = \
 	moviments.c
 
 SRCS_BONUS = \
-	checker_bonus.c
+	checker_bonus.c \
+	input_validations_bonus.c \
+	valid_order_bonus.c \
+	stack_create_bonus.c stack_manipulation_bonus.c stack_manipulation_utils_bonus.c \
+	clear_and_error_bonus.c \
+	swap_bonus.c push_bonus.c rotate_bonus.c double_bonus.c \
+	moviments_bonus.c
 
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
+MANDATORY = srcs/
+BONUS = bonus/
+SRCS := $(addprefix $(MANDATORY), $(SRCS))
+SRCS_BONUS := $(addprefix $(BONUS), $(SRCS_BONUS))
 
 all: $(NAME)
 
@@ -47,11 +57,10 @@ $(NAME_BONUS): $(SRCS_BONUS) $(LIBFT)
 	$(COMPILER) $(FLAGS) $(SRCS_BONUS) -L$(LIBFT_DIR) -lft -o $(NAME_BONUS)
 
 clean:
-	rm -rf *.o
 	$(MAKE) -sC $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(NAME_BONUS)
 	$(MAKE) -sC $(LIBFT_DIR) fclean
 
 re: fclean all
