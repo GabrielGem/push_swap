@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/19 14:26:08 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:53:48 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ static int	convert_str_to_int(char	*str, t_stack **list, char *init_str)
 	}
 	while (ft_isdigit(*str))
 	{
-		if (number > MAX_INT / 10
-			|| (((number * 10) + (*str - '0')) * -1) < MIN_INT)
+		number = (number * 10) + (*str - '0');
+		if ((sign == 1 && number > MAX_INT)
+			|| (sign == -1 && (number * -1) < MIN_INT))
 		{
 			free(init_str);
 			memclear(*list, ERRORLIST);
 		}
-		number = (number * 10) + (*str - '0');
 		str++;
 	}
 	return ((int)(number * sign));
