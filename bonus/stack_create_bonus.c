@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/18 17:27:01 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:34:29 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ static int	convert_str_to_int(char	*str, t_stack **list, char *init_str)
 {
 	long	number;
 	int		sign;
-	int		i;
 
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
 	number = 0;
 	sign = 1;
-	if (ft_issignal(str[i]))
+	if (ft_issignal(*str))
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(*str))
 	{
-		if (number > MAX_INT / 10)
+		if (number > MAX_INT / 10
+			|| (((number * 10) + (*str - '0')) * -1) < MIN_INT)
+		{
 			free(init_str);
-		if (number > MAX_INT / 10)
 			memclear(*list, ERRORLIST);
-		number = (number * 10) + (str[i] - '0');
-		i++;
+		}
+		number = (number * 10) + (*str - '0');
+		str++;
 	}
 	return ((int)(number * sign));
 }
