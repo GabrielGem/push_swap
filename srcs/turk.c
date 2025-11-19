@@ -6,7 +6,7 @@
 /*   By: gabrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:21:57 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/17 17:29:31 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:02:29 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static t_calc	update_cost(t_orch *stacks)
 {
 	t_calc	cost;
 
-	cost.min = small_number(stacks->a);
-	cost.max = big_number(stacks->a);
+	cost.min = big_or_small_number(stacks->a, SMALL);
+	cost.max = big_or_small_number(stacks->a, BIG);
 	cost.len = stack_size(stacks->a);
 	cost.cmp = stacks->b->index;
 	ft_memset(cost.moves, 1, sizeof(cost.moves));

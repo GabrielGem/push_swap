@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:26:46 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/17 16:18:31 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/18 10:59:12 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	convert_str_to_int(char	*str, t_stack **list, char *init_str)
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	number = 0;
-	sign = 0;
+	sign = 1;
 	if (ft_issignal(str[i]))
 	{
 		if (str[i] == '-')
@@ -64,5 +64,5 @@ static int	convert_str_to_int(char	*str, t_stack **list, char *init_str)
 		number = (number * 10) + (str[i] - '0');
 		i++;
 	}
-	return (((int)number * sign));
+	return ((int)(number * sign));
 }
