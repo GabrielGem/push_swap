@@ -6,7 +6,7 @@
 /*   By: gabrgarc <gabrgarc@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:12:12 by gabrgarc          #+#    #+#             */
-/*   Updated: 2025/11/19 13:52:59 by gabrgarc         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:48:35 by gabrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_stack	*validations(char **args)
 {
 	char	*str;
 	t_stack	*list;
-	int		check;
 
 	empty_arguments(args);
 	str = ft_revsplit(args, ' ');
@@ -28,11 +27,6 @@ t_stack	*validations(char **args)
 	list = stack_create(str);
 	free(str);
 	valid_double_numbers(list);
-	if (check)
-	{
-		stack_clear(&list, free);
-		exit (0);
-	}
 	return (list);
 }
 
